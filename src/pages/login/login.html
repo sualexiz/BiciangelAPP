@@ -1,0 +1,34 @@
+<ion-header class="login-header auth-header">
+  <ion-navbar>
+    <ion-title>Ingresar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content auth-content">
+  <form class="login-form auth-form" [formGroup]="login" (ngSubmit)="doLogin()">
+    <ion-item>
+      <ion-input type="email" placeholder="Email" [(ngModel)] = "userModel.email" formControlName="email"></ion-input>
+    </ion-item>
+    <show-hide-container>
+      <ion-item>
+        <ion-input type="password" placeholder="Contraseña" [(ngModel)] = "userModel.password" formControlName="password" show-hide-input></ion-input>
+      </ion-item>
+    </show-hide-container>
+    <button ion-button block class="auth-action-button login-button" type="submit" [disabled]="!login.valid || !btnSend">Iniciar sesión</button>
+  </form>
+  <ion-row class="alt-options" style="margin-top:20px">
+    <!-- <ion-col no-padding width-50>
+      <button ion-button block clear class="forgot-button" (click)="goToForgotPassword()">{{'FORGOT_PASSWORD?' | translate }}</button>
+    </ion-col> -->
+    <ion-col no-padding width-50>
+      <!-- <button ion-button block clear class="signup-button" (click)="goToSignup()">{{'SIGN_UP!' | translate}}</button> -->
+      <a target="_blank" href = "{{ url }}../registro" class="textoo">Registrarse</a>      
+    </ion-col>
+  </ion-row>
+  <!-- <p class="auth-divider">
+    Or
+  </p> -->
+  <!-- <button ion-button block class="facebook-auth-button" (click)="doFacebookLogin()">Log in with Facebook</button>
+  <button ion-button block class="google-auth-button" (click)="doGoogleLogin()">Log in with Google</button>
+  <button ion-button block class="twitter-auth-button" (click)="doTwitterLogin()">Log in with Twitter</button> -->
+</ion-content>

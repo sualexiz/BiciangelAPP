@@ -1,0 +1,237 @@
+<!--
+  Generated template for the ShowRequestFinishPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalles de solicitud</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="schedule-content">
+
+  <div>
+    <ion-segment class="schedule-segment">
+      <ion-segment-button value="today">
+        Detalles de la solicitud
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div>
+    <ion-list class="schedule-list">
+      <ion-item class="schedule-item">
+        <ion-row class="schedule-data">
+          <ion-col width-20>
+            <ion-icon class="description-icon" name="barcode"></ion-icon>
+          </ion-col>
+          <ion-col width-80>
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">Codigo de la solicitud</h2>
+                <div class="item-description">
+                  <p class="description-text">{{ requestAngelModel.id }}</p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item class="schedule-item">
+        <ion-row class="schedule-data">
+          <ion-col width-20>
+            <ion-icon class="description-icon" name="person"></ion-icon>
+          </ion-col>
+          <ion-col width-80>
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">Patrocinador</h2>
+                <div class="item-description">
+                  <p class="description-text">{{ requestAngelModel.sponsor?.name }}</p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item class="schedule-item">
+        <ion-row class="schedule-data">
+          <ion-col width-20>
+            <ion-icon class="description-icon" name="thermometer"></ion-icon>
+          </ion-col>
+          <ion-col width-80>
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">Estado de la solicitud</h2>
+                <div class="item-description">
+                  <p class="description-text">{{ requestAngelModel.status?.name }}</p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item class="schedule-item" *ngIf="requestAngelModel.bike_angel">
+        <ion-row class="schedule-data">
+          <ion-col width-20>
+            <ion-icon class="description-icon" name="person"></ion-icon>
+          </ion-col>
+          <ion-col width-80>
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">Nombre completo biciusuario:</h2>
+                <div class="item-description">
+                  <p class="description-text">
+                    {{ requestAngelModel.user_creator?.first_name }} {{ requestAngelModel.user_creator?.second_name }} {{ requestAngelModel.user_creator?.last_name
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item class="schedule-item" *ngIf="requestAngelModel.bike_angel">
+        <ion-row class="schedule-data">
+          <ion-col width-20>
+            <ion-icon class="description-icon" name="call"></ion-icon>
+          </ion-col>
+          <ion-col width-80>
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">Telefono movil biciusuario:</h2>
+                <div class="item-description">
+                  <p class="description-text">{{ requestAngelModel.user_creator?.mobile }}</p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item class="schedule-item">
+        <ion-row class="schedule-data">
+          <ion-col width-20>
+            <ion-icon class="description-icon" name="calendar"></ion-icon>
+          </ion-col>
+          <ion-col width-80>
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">Fecha de acompañamiento</h2>
+                <div class="item-description">
+                  <p class="description-text">{{ requestAngelModel?.take_date | date: 'dd/MM/yyyy' }}</p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+
+      <ion-item class="schedule-item">
+        <ion-row class="schedule-data">
+          <ion-col width-20>
+            <ion-icon class="description-icon" name="time"></ion-icon>
+          </ion-col>
+          <ion-col width-80>
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">Hora de salida</h2>
+                <div class="item-description">
+                  <p class="description-text">{{ requestAngelModel?.time_start | date: 'h:mm a' }}</p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item class="schedule-item">
+        <ion-row class="schedule-data">
+          <ion-col width-20>
+            <ion-icon class="description-icon" name="pin"></ion-icon>
+          </ion-col>
+          <ion-col width-80>
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">Dirección de salida</h2>
+                <div class="item-description">
+                  <p class="description-text">{{ requestAngelModel.address_start }}</p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+
+      <ion-item class="schedule-item">
+        <ion-row class="schedule-data">
+          <ion-col width-20>
+            <ion-icon class="description-icon" name="pin"></ion-icon>
+          </ion-col>
+          <ion-col width-80>
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">Dirección de llegada</h2>
+                <div class="item-description">
+                  <p class="description-text">{{ requestAngelModel.address_finish }}</p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+
+
+      <ion-item class="schedule-item" *ngIf="requestAngelModel.kilometers_traveled">
+        <ion-row class="schedule-data">
+          <ion-col width-20>
+            <ion-icon class="description-icon" name="trending-up"></ion-icon>
+          </ion-col>
+          <ion-col width-80>
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">Km de acompañamiento</h2>
+                <div class="item-description">
+                  <p class="description-text">{{ requestAngelModel.kilometers_traveled }} km</p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item class="schedule-item" *ngIf="requestAngelModel.description_how_to_arrive">
+        <ion-row class="schedule-data">
+          <ion-col width-20>
+            <ion-icon class="description-icon" name="text"></ion-icon>
+          </ion-col>
+          <ion-col width-80>
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">Observaciones</h2>
+                <div class="item-description">
+                  <p class="description-text">{{ requestAngelModel.description_how_to_arrive }}</p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+
+    </ion-list>
+  </div>
+
+</ion-content>

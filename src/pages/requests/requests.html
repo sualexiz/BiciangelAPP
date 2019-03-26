@@ -1,0 +1,114 @@
+<!--
+  Generated template for the RequestFinishBikeuserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+    <ion-title>Solicitudes asignadas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content *ngIf="requestAngelModel.length<1">
+  <h2 class="section-title">{{ message }}</h2>
+</ion-content>
+
+
+<ion-content class="schedule-content">
+  <div>
+    <ion-list class="schedule-list">
+      <ion-item class="schedule-item" *ngFor="let request of requestAngelModel">
+        <section *ngIf="isCancel" class="form-section">
+          <ion-item>
+            <ion-textarea rows="7" [(ngModel)]="requestAngelModel[0].observationCancel" placeholder="Motivo de cancelación"></ion-textarea>
+          </ion-item>
+          <button ion-button full [disabled]="!requestAngelModel[0].observationCancel || !btnSend" class="button-danger" (click)="cancelRequestBikeAngel(request.id)">Enviar cancelación</button>
+        </section>
+        <ion-row>
+          <ion-col width-100 class="schedule-data">
+            <div class="data-item">
+              <div class="item-content">
+                <h2 class="item-title one-line">{{ request.status?.name }}</h2>
+                <div class="item-description">
+                  <ion-icon class="description-icon" name="person"></ion-icon>
+                  <p class="description-text">
+                    <strong>Biciangel: </strong> {{ request.bike_angel.user.first_name }}
+                  </p>
+                </div>
+                <div class="item-description">
+                  <ion-icon class="description-icon" name="calendar"></ion-icon>
+                  <p class="description-text">
+                    <strong>Fecha del acompañamiento: </strong> {{ request?.take_date | date: 'dd/MM/yyyy' }}
+                  </p>
+                </div>
+                <div class="item-description">
+                  <ion-icon class="description-icon" name="clock"></ion-icon>
+                  <p class="description-text">
+                    <strong>Hora de salida: </strong> {{ request?.time_start | date: 'h:mm a' }}
+                  </p>
+                </div>
+                <div class="item-description">
+                  <ion-icon class="description-icon" name="pin"></ion-icon>
+                  <p class="description-text">
+                    <strong>Lugar de salida: </strong> {{ request.address_start }}
+                  </p>
+                </div>
+                <div class="item-description">
+                  <ion-icon class="description-icon" name="pin"></ion-icon>
+                  <p class="description-text">
+                    <strong>Lugar de llegada: </strong> {{ request.address_finish }}
+                  </p>
+                </div>
+                <div class="item-description">
+                  <ion-icon class="description-icon" name="call"></ion-icon>
+                  <p class="description-text">
+                    <strong>Teléfono móvil del biciusuario: </strong> {{ request.users[0]?.mobile }}
+                  </p>
+                </div>
+                <div class="item-description" *ngIf="request.description_how_to_arrive">
+                  <ion-icon class="description-icon" name="text"></ion-icon>
+                  <p class="description-text">
+                    <strong>Observaciones de llegada: </strong> {{ request.description_how_to_arrive }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <!-- Se muestra cuando no tiene ninguna soolicitud en curso -->
+        <div *ngIf="request.statuses_id == 3">
+          <section class="form-section" *ngIf="!confirm">
+            <button class="button-primary" ion-button full (click)="accept()" [disabled]="!btnSend">Reportar salida</button>
+          </section>
+          <section class="form-section" *ngIf="confirm">
+            <button class="button-secondary" ion-button full (click)="cancel()" [disabled]="!btnSend">Cancelar</button>
+            <button class="button-primary" ion-button full (click)="requestGps(request.id,'startTrack')" [disabled]="!btnSend">Empezar!</button>
+          </section>
+        </div>
+
+        <section class="form-section" *ngIf="!isCancel">
+          <button class="button-danger" ion-button full (click)="enableCancel()">Cancelar solicitud</button>
+        </section>
+
+
+
+        <!-- Se muestra cuando tiene una solicitud en curso -->
+        <div *ngIf="request.statuses_id == 9">
+          <section class="form-section" *ngIf="!confirm">
+            <button [disabled]="isCancel" class="button-primary" ion-button full (click)="accept()" [disabled]="!btnSend">Reportar llegada</button>
+          </section>
+          <section class="form-section" *ngIf="confirm">
+            <button class="button-secondary" ion-button full (click)="cancel()" [disabled]="!btnSend">Cancelar</button>
+            <button class="button-primary" ion-button full (click)="requestGps(request.id,'finish')" [disabled]="!btnSend">Finalizar</button>
+          </section>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

@@ -1,0 +1,47 @@
+<!--
+  Generated template for the RequestFinishBikeuserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      <ion-title>Solicitudes Finalizadas</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content *ngIf="requestAngelModel.length<1">
+    <h2 class="section-title">{{ message }}</h2>
+  </ion-content>
+  
+  
+  <ion-content class="schedule-content">
+      <div>
+        <ion-list class="schedule-list">
+          <ion-item class="schedule-item" *ngFor="let request of requestAngelModel">
+            <ion-row (click)="showRequestFinish(request.id)">
+              <ion-col width-20 class="schedule-date">
+                <h2 class="schedule-day">{{ request.id }}</h2>
+              </ion-col>
+              <ion-col width-80 class="schedule-data">
+                <div class="data-item">
+                  <div class="item-content">
+                    <h2 class="item-title one-line">{{ request.status?.name }}</h2>
+                    <div class="item-description">
+                      <ion-icon class="description-icon" name="clock"></ion-icon>
+                      <p class="description-text">{{ request?.take_date | date: 'dd/MM/yyyy' }}</p>
+                    </div>
+                  </div>
+                  <ion-icon class="item-icon" name="arrow-forward" (click)="showRequestFinish(request.id)"></ion-icon>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+        </ion-list>
+      </div>
+  
+  </ion-content>

@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Solicitar biciángel</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="forms-validations-content">
+  <form class="sample-form validations-form" [formGroup]="event_form" (ngSubmit)="requestAngel()">
+    <section class="form-section">
+
+      <ion-row no-padding>
+        <ion-item>
+          <ion-label floating>Fecha del acompañamiento *</ion-label>
+          <ion-datetime [(ngModel)]="requestAngelModel.take_date" [min]="minDate" [max]="maxDate" cancelText="Cancelar" doneText="Hecho"
+            formControlName="accompanimentDate" displayFormat="DD/MM/YYYY" pickerFormat="DD-MM-YYYY"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Hora de salida *</ion-label>
+          <ion-datetime [(ngModel)]="requestAngelModel.time_start" cancelText="Cancelar" doneText="Hecho" formControlName="timeStart"
+            displayFormat="h mm a" pickerFormat="h mm A"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="requestAngelModel.address_start" placeholder="Dirección de salida. *" type="text" formControlName="address"></ion-input>
+        </ion-item>
+
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.address">
+            <div class="error-message" *ngIf="event_form.get('address').hasError(validation.type) && (event_form.get('address').dirty || event_form.get('address').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item>
+          <ion-input [(ngModel)]="requestAngelModel.address_finish" placeholder="Dirección de Llegada. *" type="text" formControlName="addressFinish"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.addressFinish">
+            <div class="error-message" *ngIf="event_form.get('addressFinish').hasError(validation.type) && (event_form.get('addressFinish').dirty || event_form.get('addressFinish').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item>
+          <ion-textarea rows="7" [(ngModel)]="requestAngelModel.description_how_to_arrive" formControlName="description" placeholder="Observaciones de recogida"></ion-textarea>
+        </ion-item>
+
+      </ion-row>
+    </section>
+
+    <section *ngIf="addMode" class="form-section">
+      <button (click)="requestAngel()" class="form-action-button" ion-button full type="submit" [disabled]="!event_form.valid || !btnSend || !canRequestAngel">Enviar solicitud</button>
+    </section>
+
+    <section *ngIf="editMode" class="form-section">
+      <button (click)="updateRequest()" class="form-action-button" ion-button full type="submit" [disabled]="!event_form.valid || !btnSend">Actualizar solicitud</button>
+    </section>
+
+  </form>
+</ion-content>

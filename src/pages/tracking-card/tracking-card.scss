@@ -1,0 +1,194 @@
+page-tracking-card {
+	.schedule-content
+	{
+		background-color: color($colors, background, base);
+
+		.schedule-segment
+		{
+			padding: 20px;
+			background-color: $white;
+			@include segment-text-styles($theme-color-1);
+			@include element-shadow();
+		}
+
+		.schedule-list
+		{
+			padding: 10px 15px;
+
+			.schedule-item
+			{
+				padding: 5px;
+				background-color: transparent;
+				border: none;
+
+				.item-inner
+				{
+					border: none;
+					padding: 0px;
+
+					ion-label {
+						margin: 0px;
+					}
+				}
+
+				.schedule-date
+				{
+					color: $white-d;
+					text-align: center;
+					padding: 0px 10px 0px 0px;
+					@include align-self(center);
+
+					.schedule-day
+					{
+						font-size: 3.2rem;
+						font-weight: 400;
+					}
+
+					.schedule-month
+					{
+						font-size: 1.2rem;
+						font-weight: 500;
+						text-transform: uppercase;
+					}
+
+					.schedule-time
+					{
+						font-size: 1.2rem;
+						font-weight: 500;
+					}
+				}
+
+				.schedule-data
+				{
+					border-radius: 6px;
+					background-color: $white;
+					padding: 12px 20px;
+					@include element-shadow();
+
+					.data-item
+					{
+						@include display(flex);
+						@include align-items(center);
+						@include justify-content(space-between);
+
+						.item-content
+						{
+							flex: 0 0 90%;
+					    max-width: 90%;
+							padding-right: 5px;
+
+							.item-title
+							{
+								font-size: 1.6rem;
+								font-weight: 500;
+								letter-spacing: 0.2px;
+								color: $theme-color-1;
+								margin-bottom: 2px;
+
+								&.one-line
+								{
+									overflow: hidden;
+									text-overflow: ellipsis;
+									white-space: nowrap;
+								}
+							}
+
+							.item-description
+							{
+								margin-bottom: 4px;
+								@include display(flex);
+								@include align-items(center);
+								@include justify-content(space-between);
+
+								&:last-child
+								{
+									margin: 0px;
+								}
+
+							
+								.description-text
+								{
+									flex: 0 0 88%;
+							    max-width: 88%;
+									white-space: normal;
+									font-size: 1.6rem;
+									line-height: 1.4;
+									letter-spacing: 0.2px;
+									color: $black-b;
+
+									&.one-line
+									{
+										overflow: hidden;
+									  text-overflow: ellipsis;
+									  white-space: nowrap;
+									}
+								}
+							}
+						}
+
+						.item-icon
+						{
+							flex: 0 0 10%;
+					    max-width: 10%;
+						  text-align: right;
+							color: $theme-color-2;
+							font-size: 2.2em;
+							padding-left: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	.description-icon
+	{
+		color: $white-d;
+		flex: 0 0 12%;
+		max-width: 12%;
+		padding-right: 2px;
+		font-size: 4.5rem;
+		text-align: left;
+	}
+
+	.button-primary,.button-secondary,.button-danger
+	{
+		border-radius: 6px !important;
+	}
+
+	.button-primary
+	{
+		margin: 0px;
+		margin-top: 20px;
+		@include call-to-action-button-styles(color($colors, button, base), color($colors, button, contrast));
+	}
+
+	.button-secondary
+	{
+		margin: 0px;
+		margin-top: 20px;
+
+		@include call-to-action-button-styles(color($colors, button-alt, base), color($colors, button-alt, contrast));
+	}
+
+	.button-danger
+	{
+		margin: 0px;
+		margin-top: 20px;
+
+		@include call-to-action-button-styles(color($colors, danger), color($colors, google, contrast));
+	}
+
+
+	.description-text2
+	{
+		flex: 0 0 88%;
+		max-width: 88%;
+		white-space: normal;
+		font-size: 1.6rem;
+		line-height: 1.4;
+		letter-spacing: 0.2px;
+		color: $black-b;
+	}
+}

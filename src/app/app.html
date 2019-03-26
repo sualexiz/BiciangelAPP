@@ -1,0 +1,23 @@
+<ion-menu [content]="content" [swipeEnabled]="false">
+  <ion-content class="menu-content" >
+    <ion-list class="menu-list">
+      <ion-row>
+        <ion-col col-1></ion-col>
+        <ion-col col-10>
+          <img src="./assets/images/biciangel-01.svg">
+        </ion-col>
+        <ion-col col-1></ion-col>
+      </ion-row>
+      <button ion-item detail-none *ngFor="let page of pages" (click)="openPage(page)">
+        <ion-icon *ngIf="page.icon" name="{{page.icon}}" item-left></ion-icon>
+        {{page.title}}
+      </button>
+      <button ion-item detail-none  (click)="logout()">
+        <ion-icon name="exit" item-left></ion-icon>
+        Salir
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>

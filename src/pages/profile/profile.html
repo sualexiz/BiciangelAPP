@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-icon name="ios-person-outline" style="zoom:10.0; color:#FFC300; padding: -10px 0px 0px 12px" class="user-bio-row"></ion-icon>
+<ion-content class="profile-content">
+  <div class="user-details">
+    <ion-row class="user-bio-row">
+      <ion-col no-padding>
+          <ion-col no-padding>
+                      <!--{{profile.user.about}}--><ion-icon name="md-person" style="zoom:8.0; color:#FFC300; padding: 3px 0px 0px 15px" class="user-bio-row"></ion-icon>
+            <h1 class="user-name text-center" style="zoom:2.0; padding: 5px 0px 0px 10px">{{profile[0]?.first_name}} {{profile[0]?.second_name}} {{profile[0]?.last_name}}</h1>
+        </ion-col>
+      </ion-col>
+      <ion-col no-padding width-100>
+        <p class="user-description contact" style="padding: 15px 0px 0px 23px">
+            <ion-icon class="description-icon" name="calendar"></ion-icon>
+           Fecha de Nacimiento: <b>{{profile[0]?.birthdate}}</b>
+        </p>
+        <p class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="reorder"></ion-icon>
+          Tipo de identificación: <b>{{profile[0]?.type_document?.name}}</b>
+        </p>
+        <p class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="paper"></ion-icon>
+          Número de identificación: <b>{{profile[0]?.doc_number}}</b>
+        </p>
+        <p class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="contacts"></ion-icon>
+          Género: <b>{{profile[0]?.gender?.name}}</b>
+        </p>
+        <p class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="globe"></ion-icon>
+          País de residencia: <b>{{profile[0]?.city?.departament.country.name}}</b>
+        </p>
+        <p class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="globe"></ion-icon>
+          Territorio de residencia: <b>{{profile[0]?.city?.departament.name}}</b>
+        </p>
+        <p class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="globe"></ion-icon>
+          Ciudad de residencia: <b>{{profile[0]?.city?.name}}</b>
+        </p>
+        <p class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="home"></ion-icon>
+          Barrio de residencia: <b>{{profile[0]?.neighborhood}}</b>
+        </p>
+        <p class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="phone-portrait"></ion-icon>
+          Teléfono fijo: <b>{{profile[0]?.phone}}</b>
+        </p>
+        <p class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="phone-portrait"></ion-icon>
+          Teléfono móvil: <b>{{profile[0]?.mobile}}</b>
+        </p>
+        <p *ngIf="user.roles['0'].name == 'bikeuser' " class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="bicycle"></ion-icon>
+          Recorridos acumulados: <b>{{profile[1]?.totalrecorridos}}</b>
+        </p>
+        <p *ngIf="user.roles['0'].name == 'bikeuser' " class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="bicycle"></ion-icon>
+          Kilómetros acumulados:  <b>{{profile[1]?.totalkilometros}}</b>
+        </p>
+        <p *ngIf="user.roles['0'].name == 'bikeuser' " class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="bicycle"></ion-icon>
+          Kilómetros promedio mensual: <b>{{profile[1]?.promedio}}</b>
+        </p>
+        <p *ngIf="user.roles['0'].name == 'bikeuser' " class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="bicycle"></ion-icon>
+          Kilómetros último mes: <b>{{profile[1]?.sumakilometros}}</b>
+        </p>
+        <p *ngIf="user.roles['0'].name == 'Biciangel' " class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="bicycle"></ion-icon>
+           Años de Experiencia manejando bicicleta: <b></b>
+        </p>
+        <p *ngIf="user.roles['0'].name == 'Biciangel' " class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="bicycle"></ion-icon>
+           Meses de Experiencia manejando bicicleta: <b></b>
+        </p>
+        <p *ngIf="user.roles['0'].name == 'Biciangel' " class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="bicycle">{{profile[1]?.totalrecorridos}}</ion-icon>
+          Cantidad de Recorridos realizados: <b>0</b>
+        </p>
+        <p *ngIf="user.roles['0'].name == 'Biciangel' " class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="bicycle">{{profile[1]?.totalkilometros}}</ion-icon>
+          Kilómetros acumulados:  <b>0</b>
+        </p>
+        <p *ngIf="user.roles['0'].name == 'Biciangel' " class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="bicycle">{{profile[1]?.promedio}}</ion-icon>
+          Kilómetros promedio mensual: <b>0</b>
+        </p>
+        <p *ngIf="user.roles['0'].name == 'Biciangel' " class="user-description" style="padding: 0px 0px 0px 23px">
+            <ion-icon class="description-icon" name="bicycle"></ion-icon>
+          Kilómetros último mes: <b>{{profile[1]?.sumakilometros}}</b>
+        </p>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>
